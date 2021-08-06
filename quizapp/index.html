@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="style/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script> -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+
+<body>
+    <!-- <div class="mainContent">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">1. Cevap İçeriği</label>
+            <input type="text" class="form-control col-lg-10" id="exampleFormControlInput1" placeholder="1.Cevap İçeriğinizi Yazınız">
+            <input class="form-check-input  col-lg-2" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+
+        </div>
+<hr>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">2. Cevap İçeriği</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="2.Cevap İçeriğinizi Yazınız">
+          </div>
+          <hr>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">3. Cevap İçeriği</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="3.Cevap İçeriğinizi Yazınız">
+          </div>
+          <hr>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">4. Cevap İçeriği</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="4.Cevap İçeriğinizi Yazınız">
+          </div>
+          <hr>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">5. Cevap İçeriği</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="5.Cevap İçeriğinizi Yazınız">
+          </div>
+         
+    </div> -->
+
+               
+  
+<div class="mainContent" id="mainContent">
+
+    <div class="questionHead">
+        <p>Soru ekle </p>
+           </div>
+<div class="question mt-3">
+
+    <select class="form-select form-select-sm" id="questionTypeSelect" aria-label=".form-select-sm example">
+        <option  value="1" selected>Lütfen Soru Tipini Seçiniz...</option>
+        <option >Tekli işaretlemeli</option>
+        <option>Çoklu İşaretlemeli</option>
+        <option>Metinsel</option>
+      </select>
+
+      <div class="mt-3">
+      
+        <input type="text" class="form-control"  id="textSoru" placeholder="Bu alana soru içeriği girmelisiniz">
+        <button type="button" id="kaydetSoru" class="btn btn-outline-primary mt-3">Kaydet</button>
+
+   </div> 
+</div>       
+    
+
+
+</div>
+
+<div class="secondContent"  id="secondContent">
+
+
+<div class="question">
+    <p id="questionHeadTitle"></p> 
+    <p > Sorusuna cevap ekle</p>
+
+    <button type="button" id="update" class="btn btn-outline-primary disabled" style="float: right;">Cevapları Düzenle</button>  
+
+</div>
+   
+    <hr>
+    <div class="questionType">
+      <p class="questionTypeTitle">Soru Tipi</p> 
+      <p class="questionType" id="questionType"></p> 
+
+    </div>
+    <div class="questionContent">
+      <p class="questionTitle">Soru</p>
+      <p id="questionText"></p>
+    </div>
+   
+    
+    <div class="mb-3" name="answers" id="answers">
+        <label for="exampleFormControlInput1" class="form-label" id="label1">1. Cevap İçeriği</label>
+        <div id="updateForm" name="updateForm" class="updateForm" > 
+          <button type="button" class="btn btn-outline-danger deleteButton mg" style="float: right;">Sil</button>  
+          <button type="button" class="btn btn-outline-primary checkedUpdate mg" style="float: right;">Doğru olarak düzenle.</button>  
+          <button type="button"  class="btn btn-outline-primary saveUpdates " style="float: right;">Değişiklikleri Kaydet</button>  
+     </div>
+        <div class="answerContent">
+            <input type="text"   name="answerInput" class="form-control answerInput" id="i1" placeholder="1.Cevap İçeriğinizi Yazınız">
+            <input class="form-check-input  col-lg-2 mt-2"  type="radio" name="flexRadioDefault" id="radioButton">
+            <p>Doğru</p>
+        </div>
+      
+        <hr>
+    </div>
+
+      <div class="mb-3 answers" name="answers" id="answers">
+        <label for="exampleFormControlInput1" class="form-label" id="label2"  >2. Cevap İçeriği</label>
+        <div id="updateForm" name="updateForm" class="updateForm"> 
+          <button type="button" class="btn btn-outline-danger deleteButton ml-1" style="float: right;">Sil</button>  
+          <button type="button" class="btn btn-outline-primary checkedUpdate" style="float: right;">Doğru olarak düzenle.</button>  
+          <button type="button" class="btn btn-outline-primary saveUpdates " style="float: right;">Değişiklikleri Kaydet</button>  
+     </div>
+        <div class="answerContent">
+            <input type="text"    name="answerInput" class="form-control answerInput" id="i2" placeholder="2.Cevap İçeriğinizi Yazınız">
+            <i class="bi bi-check"></i>
+            <input class="form-check-input  col-lg-2 mt-2"  type="radio" name="flexRadioDefault" id="radioButton">
+            <p>Doğru</p>
+        </div>
+     
+        <hr>
+      </div>
+      
+      <div class="mb-3"  name="answers" id="answers">
+        <label for="exampleFormControlInput1" class="form-label" id="label3">3. Cevap İçeriği</label>
+        <div id="updateForm" name="updateForm" class="updateForm"> 
+          <button type="button" class="btn btn-outline-danger deleteButton ml-1" style="float: right;">Sil</button>  
+          <button type="button"  class="btn btn-outline-primary checkedUpdate" style="float: right;">Doğru olarak düzenle.</button>  
+          <button type="button" class="btn btn-outline-primary saveUpdates " style="float: right;">Değişiklikleri Kaydet</button>  
+     </div>
+<div class="answerContent">
+    <input type="text"   name="answerInput" class="form-control answerInput" id="i3" placeholder="3.Cevap İçeriğinizi Yazınız">
+    <input class="form-check-input  col-lg-2 mt-2"  type="radio" name="flexRadioDefault" id="radioButton">
+    <p>Doğru</p>
+</div>
+<hr>
+
+    </div>
+     
+      <div class="mb-3"  name="answers" id="answers">
+        <label for="exampleFormControlInput1" class="form-label"  id="label4">4. Cevap İçeriği</label>
+        <div id="updateForm"name = "updateForm" class="updateForm"> 
+          <button type="button" class="btn btn-outline-danger deleteButton ml-1" style="float: right;">Sil</button>  
+          <button type="button" class="btn btn-outline-primary checkedUpdate" style="float: right;">Doğru olarak düzenle.</button>  
+          <button type="button" id="" class="btn btn-outline-primary saveUpdates " style="float: right;">Değişiklikleri Kaydet</button>  
+     </div>
+     
+        <div class="answerContent">
+            <input type="text" class="form-control answerInput"   name="answerInput"  id="i4" placeholder="4.Cevap İçeriğinizi Yazınız">
+            <input class="form-check-input  col-lg-2 mt-2"  type="radio" name="flexRadioDefault" id="radioButton">
+            <p>Doğru</p>
+        </div>
+        <hr>
+    </div>
+  
+      <div class="mb-3"  name="answers" id="answers">
+        <label for="exampleFormControlInput1" class="form-label"  id="label5">5. Cevap İçeriği</label>
+        <div id="updateForm" name ="updateForm" class="updateForm"> 
+          <button type="button" class="btn btn-outline-danger deleteButton ml-1" style="float: right;"><i class="fa fa-close"></i> Sil</button>  
+          <button type="button" class="btn btn-outline-primary checkedUpdate" style="float: right;">Doğru olarak düzenle.</button>  
+          <button type="button"  class="btn btn-outline-primary saveUpdates " style="float: right;">Değişiklikleri Kaydet</button>  
+     </div>
+        <div class="answerContent">
+            <input type="text" class="form-control answerInput"   name="answerInput" id="i5" placeholder="5.Cevap İçeriğinizi Yazınız">
+            <input class="form-check-input  col-lg-2 mt-2 "   type="radio" name="flexRadioDefault" id="radioButton">  
+     <p>Doğru</p>
+        </div>
+       
+    </div>
+      <button type="button" id="answerButton" class="btn btn-primary">Cevapla</button>
+
+</div>
+ 
+    <script src="script/script.js"></script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</html>

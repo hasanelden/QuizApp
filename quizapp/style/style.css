@@ -1,0 +1,100 @@
+p,.form-control,.questionType{
+
+
+    display: inline-block !important;
+    
+}
+.answerContent > .form-control{
+
+    width: 90%
+}
+.questionTitle, .questionTypeTitle{
+
+    background-color: blue;
+    padding: 5px;
+color: white;
+    border-radius: 5px;
+}
+.question{
+
+    color: blue;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.mainContent{
+margin-top: 200px;
+    max-width: 1072px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.secondContent{
+    margin-top: 200px;
+    max-width: 1072px;
+    margin-left: auto;
+    margin-right: auto;
+display: none;
+}
+
+.aktif{
+
+    display: block !important;
+}
+.style{
+    border : 2px solid blue
+}
+
+
+.pasif{
+
+    display: none;
+}
+.questionHead{
+display: block;
+  
+    border-bottom: 1px solid blue;
+}
+
+.updateForm{
+    justify-content: space-between;
+    padding: 15px;
+display: none;
+    float: right;
+}
+
+#answers{
+
+    padding: 20px;
+}
+.answers-border{
+
+    border: 1px solid blue;
+}
+
+.updateAnswer{
+
+  border: 2px solid blue;
+}
+
+.updateAnswer-bf{
+
+    border: 1px solid blue;
+}
+
+.bg{
+background-color: red;
+}
+
+
+.form-control:focus{
+
+
+  box-shadow: none;
+}
+
+.btn{
+
+    margin-right: 10px !important;
+}
