@@ -42,7 +42,7 @@ $(document).ready(function () {
           }
 
     
-  else  if ( ! $(":radio").is(':checked') ){
+ else   if ( ! $(":radio").is(':checked') ){
                                   
                                   
             
@@ -50,14 +50,55 @@ $(document).ready(function () {
                }
   
              else  {
+              $(".answerInput").each(function(i,e){
+                if(isEmptyOrSpaces($(e).val()))
+                return;
+                
+                var isExists;
+                  $(".answerInput").each(function(j,l){
+            
+               
+                    if($(e).val() == $(l).val() && $(e).attr("id") != $(l).attr("id") ) 
+                    {
+            
+                      swal("Uyarı!!!", "Aynı kayıtlar zaten mevcut!", "error");
+                      $("#update").addClass("disabled")
+                    isExists = true;
+                    // $("#update").addClass("disabled")
+                    return false;
+                 
+                }
+            
+                
+                else{
+            
+                 
+                  $("#update").removeClass("disabled")
+                  swal("Tebrikler :)", "Sorunuz başarıyla 2222222222222 cevaplanmıştır !", "success");
+   
+               }
+            
+              
+                
+            
+                    
+                  });
 
-              $("#update").removeClass("disabled")
-              swal("Tebrikler :)", "Sorunuz başarıyla cevaplanmıştır !", "success");
+                 
+               
+              });
+              // $("#update").removeClass("disabled")
+              // swal("Tebrikler :)", "Sorunuz başarıyla cevaplanmıştır !", "success");
+        
+
+
+         
         
            
            }
            
-
+   
+      
            $("#update").on('click',function(){
             $('#answerButton').addClass('pasif')
                           $('div[name="updateForm"]').toggleClass("aktif")
@@ -83,9 +124,7 @@ $(document).ready(function () {
                                  
                                  })
             
-                                })
-      
-               
+                                })         
 
     });
     $(":radio" ).on('click',function(event){
@@ -185,15 +224,17 @@ return false
  
     const  ifValue = $(this).parent().siblings('div').children(':text').val()
      
-    if(ifValue == 0){
+    if(ifValue == 0 ){
       swal("Uyarı!!!", "Boş veri kayıt edilemez!", "error");
 
 
 
     }
-    else{
 
-    eachText()
+    
+    else {
+
+     eachText()
     }
 
    })
@@ -286,21 +327,23 @@ function eachText(){
     var isExists;
       $(".answerInput").each(function(j,l){
 
-     
+   
         if($(e).val() == $(l).val() && $(e).attr("id") != $(l).attr("id") ) 
         {
-       
 
           swal("Uyarı!!!", "Aynı kayıtlar zaten mevcut!", "error");
         isExists = true;
+        // $("#update").addClass("disabled")
         return false;
-       
+     
     }
+
+    
     else{
 
      
       $("#update").removeClass("disabled")
-      swal("Tebrikler :)", "Sorunuz başarıyla cevaplanmıştır !", "success");
+      swal("Tebrikler :)", "Sorunuz başarıyla 2222222222222 cevaplanmıştır !", "success");
 
 
    }
