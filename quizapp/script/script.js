@@ -2,7 +2,6 @@
 
 $(document).ready(function () { 
 
-    // $(":input").removeProperty("width");
     $("#kaydetSoru" ).on('click',function() {
     
     
@@ -19,7 +18,7 @@ $(document).ready(function () {
            var dizi = $('.answerInput').map(function() {
             return this.value;
           }).toArray();
-          console.log(dizi)
+         
 
           if(dizi.every( (val, i, arr) => val === arr[0] )){
 
@@ -27,13 +26,13 @@ $(document).ready(function () {
 
         
 
-           console.log(dizi)
+      
            var filtered = dizi.filter(function (el) {
             return el != 0;        
           
           
           })
-          console.log(filtered) 
+         
           if(filtered.length < 2){
 
              
@@ -42,7 +41,6 @@ $(document).ready(function () {
             
           }
 
-  //  eachText()
     
   else  if ( ! $(":radio").is(':checked') ){
                                   
@@ -95,7 +93,7 @@ $(document).ready(function () {
 
      let  inputVal =  $(this).siblings("input").val ()
 
-     console.log(inputVal)
+     
      if(inputVal == 0){
 
 
@@ -107,7 +105,6 @@ return false
               
         $('input:not(:checked)').siblings("input").removeClass("style");
         $('input:checked').siblings("input").addClass("style");
-                    //  $(this).siblings("input").addClass("style")
 
      }
 
@@ -120,7 +117,7 @@ return false
   
   const  inputValueUpdate =  $(this).parent().siblings('div').children(':text').val()
   
-     console.log(inputValueUpdate)
+  
      if(inputValueUpdate == 0){
 
 
@@ -208,8 +205,7 @@ return false
         var questionType = $("#questionTypeSelect").val();
         const mainContent = $("#mainContent");
         const secondContent = $("#secondContent")
-       
-console.log(questionType)
+
         
                  
                     if(textSoru == 0 ||questionType == 1){
@@ -223,7 +219,6 @@ console.log(questionType)
     $("#questionText").html(textSoru)
     $("#questionHeadTitle").html(textSoru)
     $("#questionType").html(questionType)
-    // console.log(questionText.text()  )
     mainContent.addClass("pasif")
     secondContent.addClass("aktif")
     
@@ -249,7 +244,6 @@ function RadioChecked(){
                    alert( "veri var")
                    
                    
-                   console.log(el.val())
      
             }
                
@@ -314,12 +308,6 @@ function eachText(){
   
     
 
-// else{
-//   swal("Uyarı!!!", "Kayıt değiştirildi !", "success");
-
-
-// }
-    
         
       });
    
