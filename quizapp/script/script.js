@@ -42,7 +42,7 @@ $(document).ready(function () {
           }
 
     
- else   if ( ! $(":radio").is(':checked') ){
+    if ( ! $(":radio").is(':checked') ){
                                   
                                   
             
@@ -87,11 +87,7 @@ $(document).ready(function () {
                  
                
               });
-              // $("#update").removeClass("disabled")
-              // swal("Tebrikler :)", "Sorunuz başarıyla cevaplanmıştır !", "success");
-        
-
-
+         
          
         
            
@@ -101,7 +97,7 @@ $(document).ready(function () {
       
            $("#update").on('click',function(){
             $('#answerButton').addClass('pasif')
-                          $('div[name="updateForm"]').toggleClass("aktif")
+                          $('div[name="updateForm"]').addClass("aktif")
             
                           $("#deleteButton" ).on('click',function(){
                           
