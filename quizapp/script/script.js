@@ -13,114 +13,96 @@ $(document).ready(function () {
       $("#answerButton" ).on('click',function() {
     
 
-    
+        const CheckedtNullValue  = $('input[name="flexRadioDefault"]:checked').siblings("input").val()
+
         
-           var dizi = $('.answerInput').map(function() {
+           var dizi = $('.answerInput').map(function(name) {
+
+           
             return this.value;
           }).toArray();
-         
-
-          if(dizi.every( (val, i, arr) => val === arr[0] )){
-
-          }   
-
-        
-
-      
+       
            var filtered = dizi.filter(function (el) {
             return el != 0;        
-          
+
+            
           
           })
-         
-          if(filtered.length < 2){
+     
+      
+          var mySet = new Set(filtered);
+          uniqueVal = [...mySet];
 
-             
+     
+
+
+        if(filtered.length < 2){
+
 
             swal("Uyarı!!!", "En az 2 cevap belirlenmelidir !", "error");
-            
+           
           }
 
     
-    if ( ! $(":radio").is(':checked') ){
+  else   if  ( ! $(":radio").is(':checked') ){
                                   
-                                  
+                       
             
             swal("Uyarı!!!", "Doğru seçenek belirlenmedi!", "error");
-               }
-  
-             else  {
-              $(".answerInput").each(function(i,e){
-                if(isEmptyOrSpaces($(e).val()))
-                return;
-                
-                var isExists;
-                  $(".answerInput").each(function(j,l){
-            
+               }  
+
                
-                    if($(e).val() == $(l).val() && $(e).attr("id") != $(l).attr("id") ) 
-                    {
+  else  if (CheckedtNullValue == 0){
+            
+    swal("Uyarı!!!", "Seçilen doğru seçenekte veri yok", "error");
+                  }                
+                                  
+            
+      
+  
+           else if (filtered.length != uniqueVal.length) {
+
             
                       swal("Uyarı!!!", "Aynı kayıtlar zaten mevcut!", "error");
                       $("#update").addClass("disabled")
-                    isExists = true;
-                    // $("#update").addClass("disabled")
-                    return false;
-                 
-                }
-            
-                
-                else{
-            
-                 
-                  $("#update").removeClass("disabled")
-                  swal("Tebrikler :)", "Sorunuz başarıyla 2222222222222 cevaplanmıştır !", "success");
-   
-               }
-            
-              
-                
-            
-                    
-                  });
-
-                 
-               
-              });
-         
-         
-        
            
            }
-           
-   
-      
-           $("#update").on('click',function(){
-            $('#answerButton').addClass('pasif')
-                          $('div[name="updateForm"]').addClass("aktif")
-            
-                          $("#deleteButton" ).on('click',function(){
-                          
-                            $(this).parent().siblings("div").children("input").val() 
-                          
-                          
-                          })
-                          
-                          $('div[name="answers"]').toggleClass("answers-border")
-                          
+
+           else{
+            $(this).addClass("pasif")
+            $("#update").removeClass("disabled")
+            swal("Tebrikler :)", "Sorunuz başarıyla  cevaplanmıştır !", "success");
+            $("#update").on('click',function(){
+              $('#answerButton').addClass('pasif')
+                            $('div[name="updateForm"]').addClass("aktif")
+              
+                            $("#deleteButton" ).on('click',function(){
+                            
+                              $(this).parent().siblings("div").children("input").val() 
                             
                             
-                            $('.answerInput').on('focus',function(e){
-                             $(this).parent().parent().addClass("updateAnswer")
+                            })
+                            
+                            $('div[name="answers"]').addClass("answers-border")
+                            
                               
-                              })
-            
-                              $('.answerInput').on('blur',function(e){
-                                $(this).parent().parent().removeClass("updateAnswer")
-                                 
-                                 })
-            
-                                })         
+                              
+                              $('.answerInput').on('focus',function(e){
+                               $(this).parent().parent().addClass("updateAnswer")
+                                
+                                })
+              
+                                $('.answerInput').on('blur',function(e){
+                                  $(this).parent().parent().removeClass("updateAnswer")
+                                   
+                                   })
+              
+                                  })         
+           }
+                 
+         
+
+         
 
     });
     $(":radio" ).on('click',function(event){
@@ -162,8 +144,9 @@ return false
 
      }
      else{
+    
       if ( ! radioUpdate .is(':checked')){
-        radioUpdate.prop('checked', 'true');
+        radioUpdate.prop('checked','true');
        
      
       }
@@ -171,28 +154,29 @@ return false
     
      
    
-        radioUpdate.prop('checked', 'false');
+        radioUpdate.prop('checked','false');
 
       }
+      const hasInput =  $('.answerInput')
+
+      if(hasInput.hasClass("style")){
+
+        $(this).removeClass("pasif")
+        }
+        else{
+   
+         $(this).addClass("aktif")
+        }
        
-     const hasInput =  $('.answerInput')
+     
 
-     if(hasInput.hasClass("style")){
-
-     $(this).addClass("pasif")
-     }
-     else{
-
-      $(this).removeClass("pasif")
-     }
+   
      
 
 
-      // $(this).prop('disabled','true');
                 $('input:not(:checked)').siblings("input").removeClass("style");
         $('input:checked').siblings("input").addClass("style");
-                    //  $(this).siblings("input").addClass("style")
-
+                  
      }
 
 
@@ -219,18 +203,28 @@ return false
    $(".saveUpdates").on('click', function(){
  
     const  ifValue = $(this).parent().siblings('div').children(':text').val()
-     
-    if(ifValue == 0 ){
+   
+    let dizi = $('.answerInput').map(function() {
+      return this.value;
+    }).toArray();
+    
+    const found = dizi.filter(element => element == ifValue);
+   if(ifValue == 0 ){
       swal("Uyarı!!!", "Boş veri kayıt edilemez!", "error");
 
 
 
     }
 
+else  if(found.length == 1)    
+         {
+
+          swal("Uyarı!!!", "Değişiklileriniz kaydedildi !", "success");
+         }
     
     else {
 
-     eachText()
+      swal("Uyarı!!!", "Kayıt Zaten Mevcut!", "error");
     }
 
    })
@@ -312,43 +306,4 @@ $('div[name="answers"]').toggleClass("answers-border")
 
 function isEmptyOrSpaces(str){
   return str === null || str.match(/^ *$/) !== null;
-}
-
-function eachText(){
-
-  $(".answerInput").each(function(i,e){
-    if(isEmptyOrSpaces($(e).val()))
-    return;
-    
-    var isExists;
-      $(".answerInput").each(function(j,l){
-
-   
-        if($(e).val() == $(l).val() && $(e).attr("id") != $(l).attr("id") ) 
-        {
-
-          swal("Uyarı!!!", "Aynı kayıtlar zaten mevcut!", "error");
-        isExists = true;
-        // $("#update").addClass("disabled")
-        return false;
-     
-    }
-
-    
-    else{
-
-     
-      $("#update").removeClass("disabled")
-      swal("Tebrikler :)", "Sorunuz başarıyla 2222222222222 cevaplanmıştır !", "success");
-
-
-   }
-
-  
-    
-
-        
-      });
-   
-  });
 }
